@@ -2,11 +2,8 @@ class Solution:
     def mostWordsFound(self, sentences: List[str]) -> int:
         count = 0
 
+        # Looping through the sentences and find the maximum length
         for sentence in sentences:
-            counter = 1
-            for sent in sentence:
-                if sent == " ":
-                    counter += 1
-            count = max(count, counter)
-
+            count = max(count, len(sentence.split(" ")))
+        
         return count 

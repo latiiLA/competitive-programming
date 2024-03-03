@@ -9,8 +9,7 @@ class Solution:
         i = 0
         while i < len(processorTime):
             j = i * 4
-            minimumProcessingTime = max(minimumProcessingTime, max(tasks[j : j + 4]) + processorTime[i])
-            print(tasks[i:i+4])            
+            minimumProcessingTime = max(minimumProcessingTime, tasks[j] + processorTime[i])           
             i += 1
         
         return minimumProcessingTime

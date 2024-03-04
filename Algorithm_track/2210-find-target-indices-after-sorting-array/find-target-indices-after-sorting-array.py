@@ -6,9 +6,9 @@ class Solution:
 
         # return the indices of target element
         for i, num in enumerate(nums):
-            if num > target:
-                break
             if num == target:
                 targetElemIndices.append(i)
+            elif num > target:
+                break
         
         return targetElemIndices

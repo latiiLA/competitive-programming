@@ -6,9 +6,10 @@ class Solution:
 
         # if sumation of the two pointers pointed at the beginning and end is greater than target decrease j otherwise increase i else return result
         while i < j:
-            if numbers[i] + numbers[j] > target:
+            twoSum = numbers[i] + numbers[j]
+            if twoSum > target:
                 j -= 1
-            elif numbers[i] + numbers[j] < target:
+            elif twoSum < target:
                 i += 1
             else:
                 return [i+1, j+1]

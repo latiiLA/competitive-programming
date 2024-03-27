@@ -6,14 +6,13 @@ class Solution:
         suffix = [1] * (len(nums) + 1)
         result = [1] * len(nums)
 
+        # calculate prefix and suffix and store
         for i in range(n):
             prefix[i + 1] = prefix[i] * nums[i]
             suffix[i + 1] = suffix[i] * nums[n - i - 1]
-
-        print(prefix, suffix)
         
+        # find the answer from stored prefix and suffix
         for i in range(n):
-            print(prefix[i], suffix[n - i])
             result[i] = prefix[i] * suffix[n - i - 1]
         
         return result

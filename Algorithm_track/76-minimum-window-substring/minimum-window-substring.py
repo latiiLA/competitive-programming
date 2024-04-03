@@ -16,9 +16,9 @@ class Solution:
         string_result = [0, 0]
 
         while j < n:
-            windowDictionary[s[j]] += 1
+            windowDictionary[s[j]] = windowDictionary.get(s[j], 0) + 1
            
-            while windowDictionary >= tDictionary:
+            while all(key in windowDictionary and windowDictionary[key] >= value for key, value in tDictionary.items()):
                 if result > j - i + 1:
                     result = j - i + 1
                     string_result[0] = i

@@ -7,7 +7,7 @@ class Solution:
             return ""
 
         tDictionary = Counter(t)
-        windowDictionary = {}
+        windowDictionary = Counter()
 
         i = 0
         j = 0
@@ -16,10 +16,9 @@ class Solution:
         string_result = [0, 0]
 
         while j < n:
-            windowDictionary[s[j]] = windowDictionary.get(s[j], 0) + 1
+            windowDictionary[s[j]] += 1
            
-            while all(key in windowDictionary and windowDictionary[key] >= value for key, value in tDictionary.items()):
-
+            while windowDictionary >= tDictionary:
                 if result > j - i + 1:
                     result = j - i + 1
                     string_result[0] = i

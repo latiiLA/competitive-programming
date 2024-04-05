@@ -14,3 +14,17 @@ class Solution:
             result.append(temp_list)
 
         return result
+
+        # This is amazing approach i have found after from the submissions
+        # res = []
+        # count = defaultdict(int)
+        # for n in nums:
+        #     row = count[n]
+        #     if len(res) == row:
+        #         res.append([])
+            
+        #     res[row].append(n)
+        #     count[n] += 1
+        #     print(res)
+        
+        # return res

@@ -3,14 +3,12 @@ class Solution:
         result = []
         sentence = sentence.split(" ")
         for word in sentence:
-            flag = False
-            for i in range(len(word)):
+            prefix = word
+            for i in range(len(word) + 1):
                 if word[:i] in dictionary:
-                    result.append(word[:i])
-                    flag = True
+                    prefix = word[:i]
                     break
-            if not flag:
-                result.append(word)
+            result.append(prefix)
                 
 
         return " ".join(result)

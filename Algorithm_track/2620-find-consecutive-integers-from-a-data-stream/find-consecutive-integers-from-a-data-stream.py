@@ -1,26 +1,18 @@
 class DataStream:
 
     def __init__(self, value: int, k: int):
-        self.streams = deque()
+        self.streams = []
         self.value = value
-        self.dictionary = defaultdict(int) # keep track of the the count of k value from the 
         self.k = k
-        self.count = 0
 
     def consec(self, num: int) -> bool:
-        self.streams.append(num)
-        self.count += 1
-        self.dictionary[num] += 1
-        if self.count < self.k:
+        if num == self.value:
+            self.streams.append(num)
+            if len(self.streams) >= self.k:
+                return True
             return False
-
-        if self.count > self.k:
-            self.dictionary[self.streams.popleft()] -= 1
-            self.count -= 1
-        
-        if self.dictionary[self.value] == self.k:
-            return True
         else:
+            self.streams = []
             return False
         
 

@@ -1,16 +1,14 @@
 class Solution:
     def minimumSteps(self, s: str) -> int:
         count = 0
-        stack = []
-
-        s = [int(char) for char in s]
+        result = 0
 
         for char in s:
-            if char == 1:
-                stack.append(1)
+            if char == '1':
+                count += 1
             else:
-                count += len(stack)
+                result += count
 
-        return count
+        return result
 
         

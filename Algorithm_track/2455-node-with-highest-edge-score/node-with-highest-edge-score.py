@@ -1,21 +1,17 @@
 class Solution:
     def edgeScore(self, edges: List[int]) -> int:
-        count = Counter(edges)
         dictionary = defaultdict(int)
-        result = [0, float('-inf')]
+        max_score = float('-inf')
+        max_node = -1
         
         # First register the value of the incoming edges/indegree for each nodes
-        # At the same time update the result value if the maximum indegree encountered
         for i, edge in enumerate(edges):
             dictionary[edge] += i
-            if result[1] < dictionary[edge]:
-                result[1] = dictionary[edge]
-                result[0] = edge
-            elif result[1] == dictionary[edge] and edge < result[0]:
-                result[1] = dictionary[edge]
-                result[0] = edge
+        
+        # Update the result if the maximum indegree encountered
+        for node, score in dictionary.items():
+            if max_score < score or (max_score == score and max_node > node):
+                max_score = score
+                max_node = node
 
-
-        return result[0]        
-
-
+        return max_node   

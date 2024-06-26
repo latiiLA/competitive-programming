@@ -6,29 +6,29 @@
 #         self.right = right
 class Solution:
     def pathSum(self, root: Optional[TreeNode], targetSum: int) -> int:
-        # count the result for each node
-        def path(node, sum_):
+        
+        self.total = 0
+
+        def path(node, tot):
             if not node:
                 return 0
 
-            sum_ += node.val
+            tot += node.val
+            if tot == targetSum:
+                self.total += 1
+            path(node.left, tot)
+            path(node.right, tot)
 
-            count = sum_ == targetSum
-            count += path(node.left, sum_)
-            count += path(node.right, sum_)
+        def bfs(node):
+            queue = deque([node])
+            while queue:
+                current = queue.pop()
+                path(current, 0)
+                if current:
+                    queue.append(current.left)
+                    queue.append(current.right)
 
-            return count
+        bfs(root)
 
-        # call the function for each node and accumulate the results
-        def helper(node):
-            if not node:
-                return 0
-            path_sum = path(node, 0)
-            path_sum += helper(node.left)
-            path_sum += helper(node.right)
-
-            return path_sum
-
-        return helper(root)
-
-
+        return self.total
+        

@@ -9,26 +9,16 @@ class Solution:
         The correct approach
         if current jump is less than the next jump...take one jump and take the next jump
         else take the previous jump...
-        '''
-        pos = 0
-        count = 0
-        n = len(nums)
-        if n == 1:
-            return True
-        while pos < n:
-            if count and count < nums[pos]:
-                count = nums[pos]
-            
-            elif count and count > nums[pos]:
-                count -= 1
-            elif not count and nums[pos] == 0:
-                return False
-            else:
-                count = nums[pos]
+        '''    
+        jumps = 0
 
-            if count == 0 and pos < n - 1:
-                return False
-            # print(count)
-            pos += 1
+        # [1,1]
 
-        return True
+        for i in range(len(nums)):
+            if jumps < nums[i]:
+                jumps = nums[i]
+
+            if not jumps: break
+            jumps -= 1
+
+        return True if i == len(nums) -1 else False

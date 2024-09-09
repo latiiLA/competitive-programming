@@ -32,20 +32,7 @@ class Solution:
                     heappush(leftCost, costs[j])
                     j -= 1
 
-            if not rightCost and leftCost:
-                if counts[leftCost[0]] > 0:
-                    counts[leftCost[0]] -= 1
-                totalCost += heappop(leftCost)
-                if i <= j:
-                    heappush(leftCost, costs[i])
-                    i += 1
-            elif not leftCost and leftCost:
-                totalCost += heappop(rightCost)
-                if i <= j:
-                    heappush(rightCost, costs[j])
-                    j -= 1
-
-            elif (leftCost and leftCost[0] <= rightCost[0]):
+            if not rightCost or (leftCost and leftCost[0] <= rightCost[0]):
                 if counts[leftCost[0]] > 0:
                     counts[leftCost[0]] -= 1
                 totalCost += heappop(leftCost)
@@ -53,7 +40,7 @@ class Solution:
                     heappush(leftCost, costs[i])
                     i += 1
             else:
-                if (rightCost and counts[rightCost[0]] > 0):
+                if counts[rightCost[0]] > 0:
                     counts[rightCost[0]] -= 1
                 
                 totalCost += heappop(rightCost)
